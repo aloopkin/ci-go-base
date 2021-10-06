@@ -5,7 +5,7 @@ USER root
 
 RUN \
   apt update && \
-  apt install -y npm aspell aspell-en && \
+  apt install -y npm aspell aspell-en asciidoctor-pdf && \
   npm install -g asciidoc-link-check && \
   apt-get clean && \
   rm -rf /var/lib/apt/lists/*
