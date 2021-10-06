@@ -1,0 +1,37 @@
+name: Build
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+  schedule:
+    - cron:  '0 0 * * *'
+
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        verTag: ['1.0']
+    steps:
+    - uses: actions/checkout@v1
+    - name: Create docker tag
+      id: create_docker_tag
+      run: |
+        TAG=aauevt/ci-doc-base:${{ matrix.verTag }}
+        echo ::set-output name=TAG::$TAG
+    - name: Build docker image
+      run: |
+        docker build . \
+            --no-cache \
+            -t "${{ steps.create_docker_tag.outputs.TAG }}" \
+            --build-arg BASE_IMAGE_TAG=${{ matrix.verTag }}
+    - name: Push image to DockerHub
+      if: github.event_name != 'pull_request'
+      run: |
+        echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u aauevt --password-stdin
+        docker push ${{ steps.create_docker_tag.outputs.TAG }}
