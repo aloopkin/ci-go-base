@@ -5,7 +5,7 @@ USER root
 
 RUN \
   apt update && \
-  apt install -y npm aspell aspell-en asciidoctor ruby-asciidoctor-pdf python && \
+  apt install -y npm aspell aspell-en asciidoctor ruby-asciidoctor-pdf python python-pip-whl && \
   npm install -g asciidoc-link-check && \
   python -m pip install --upgrade pip setuptools && \
   python -m pip install pyspelling && \
