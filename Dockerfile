@@ -10,5 +10,6 @@ RUN \
   gem install asciidoctor-pdf && \
   npm install -g asciidoc-link-check && \
   pip install pyspelling && \
+  pip install lemoncheesecake[junit] && \
   apt-get clean && \
   rm -rf /var/lib/apt/lists/*
