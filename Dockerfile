@@ -5,7 +5,7 @@ USER root
 
 RUN \
   apt update && \
-  apt install -y npm aspell aspell-en asciidoctor python3 python3-pip curl ca-certificates golang-go && \
+  apt install -y npm aspell aspell-en asciidoctor python3 python3-pip curl ca-certificates golang-go bundler && \
   gem install hexapdf && \
   gem install rouge && \
   gem install asciidoctor-pdf && \
