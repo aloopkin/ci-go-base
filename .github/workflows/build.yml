@@ -16,7 +16,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        verTag: ['1.1']
+        verTag: ['1.2']
     steps:
     - uses: actions/checkout@v1
     - name: Create docker tag
