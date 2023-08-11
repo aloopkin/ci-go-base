@@ -15,6 +15,7 @@ RUN \
   npm install -g asciidoc-link-check && \
   pip install pyspelling && \
   pip install lemoncheesecake[junit] && \
+  pip install lemoncheesecake-requests && \
   apt-get clean && \
   rm -rf /var/lib/apt/lists/*
 
