@@ -1,5 +1,5 @@
 ARG BASE_IMAGE_TAG
-FROM debian:bullseye-slim
+FROM debian:bookworm-slim
 
 USER root
 
