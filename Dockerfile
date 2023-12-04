@@ -19,6 +19,8 @@ RUN \
   mkdir -p /opt/sonar && cd /opt/sonar && \
   curl https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-5.0.1.3006.zip -o sonarscan.zip && \
   unzip sonarscan.zip && \
+  mv */bin . && mv */conf . && mv */lib . && \
+  rm -rf sonar-* && \
   rm sonarscan.zip
 
 # installing QA Root CA
