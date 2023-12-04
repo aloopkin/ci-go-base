@@ -23,7 +23,7 @@ jobs:
     - name: Create docker tag
       id: create_docker_tag
       run: |
-        TAG=aauevt/ci-doc-base:${{ matrix.verTag }}
+        TAG=aauevt/ci-go-base:${{ matrix.verTag }}
         echo ::set-output name=TAG::$TAG
     - name: Build docker image
       run: |
