@@ -10,7 +10,7 @@ RUN \
   ln -s /usr/lib/go-1.19/bin/go /usr/bin/go && \
   ln -s /usr/lib/go-1.19/bin/gofmt /usr/bin/gofmt && \  
   pip install pyspelling && \
-  pip install lemoncheesecake[junit] && \
+  pip install lemoncheesecake[junit,html] && \
   pip install lemoncheesecake-requests && \
   apt-get clean && \
   rm -rf /var/lib/apt/lists/*
