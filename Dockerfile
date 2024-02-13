@@ -4,7 +4,7 @@ FROM debian:bookworm-slim
 USER root
 
 RUN \
-  echo "deb http://deb.debian.org/debian bullseye-backports main" >> /etc/apt/sources.list && \
+  echo "deb http://deb.debian.org/debian bookworm-backports main" >> /etc/apt/sources.list && \
   apt update && \
   apt install -y npm aspell aspell-en python3 pipx curl ca-certificates openjdk-11-jdk unzip golang-1.21-go bundler openssl xxd alien && \
   ln -s /usr/lib/go-1.21/bin/go /usr/bin/go && \
