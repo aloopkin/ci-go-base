@@ -11,7 +11,7 @@ RUN \
   ln -s /usr/lib/go-1.21/bin/gofmt /usr/bin/gofmt && \  
   PIPX_HOME=/opt/pipx PIPX_BIN_DIR=/usr/local/bin PIPX_MAN_DIR=/usr/local/share/man pipx install --include-deps pyspelling && \
   PIPX_HOME=/opt/pipx PIPX_BIN_DIR=/usr/local/bin PIPX_MAN_DIR=/usr/local/share/man pipx install --include-deps lemoncheesecake[junit] && \
-  PIPX_HOME=/opt/pipx PIPX_BIN_DIR=/usr/local/bin PIPX_MAN_DIR=/usr/local/share/man pipx inject --include-deps lemoncheesecake[junit] lemoncheesecake-requests && \
+  PIPX_HOME=/opt/pipx PIPX_BIN_DIR=/usr/local/bin PIPX_MAN_DIR=/usr/local/share/man pipx inject lemoncheesecake[junit] lemoncheesecake-requests && \
   apt-get clean && \
   rm -rf /var/lib/apt/lists/*
 
