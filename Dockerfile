@@ -6,12 +6,14 @@ USER root
 RUN \
   echo "deb http://deb.debian.org/debian bookworm-backports main" >> /etc/apt/sources.list && \
   apt update && \
-  apt install -y npm aspell aspell-en python3 pipx curl ca-certificates openjdk-17-jdk unzip bundler openssl xxd alien && \
+  apt install -y npm aspell aspell-en python3 pipx curl ca-certificates openjdk-17-jdk unzip bundler openssl xxd alien g++ gcc libc6-dev make pkg-config  && \
   PIPX_HOME=/opt/pipx PIPX_BIN_DIR=/usr/local/bin PIPX_MAN_DIR=/usr/local/share/man pipx install --include-deps pyspelling && \
   PIPX_HOME=/opt/pipx PIPX_BIN_DIR=/usr/local/bin PIPX_MAN_DIR=/usr/local/share/man pipx install --include-deps lemoncheesecake[junit] && \
   PIPX_HOME=/opt/pipx PIPX_BIN_DIR=/usr/local/bin PIPX_MAN_DIR=/usr/local/share/man pipx inject lemoncheesecake lemoncheesecake-requests && \
   apt-get clean && \
   rm -rf /var/lib/apt/lists/*
+
+ENV GOTOOLCHAIN=local
 
 RUN \
   curl -L https://go.dev/dl/go1.21.8.linux-amd64.tar.gz -o go.tar.gz && \
