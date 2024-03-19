@@ -6,14 +6,18 @@ USER root
 RUN \
   echo "deb http://deb.debian.org/debian bookworm-backports main" >> /etc/apt/sources.list && \
   apt update && \
-  apt install -y npm aspell aspell-en python3 pipx curl ca-certificates openjdk-17-jdk unzip golang-1.21-go bundler openssl xxd alien && \
-  ln -s /usr/lib/go-1.21/bin/go /usr/bin/go && \
-  ln -s /usr/lib/go-1.21/bin/gofmt /usr/bin/gofmt && \  
+  apt install -y npm aspell aspell-en python3 pipx curl ca-certificates openjdk-17-jdk unzip bundler openssl xxd alien && \
   PIPX_HOME=/opt/pipx PIPX_BIN_DIR=/usr/local/bin PIPX_MAN_DIR=/usr/local/share/man pipx install --include-deps pyspelling && \
   PIPX_HOME=/opt/pipx PIPX_BIN_DIR=/usr/local/bin PIPX_MAN_DIR=/usr/local/share/man pipx install --include-deps lemoncheesecake[junit] && \
   PIPX_HOME=/opt/pipx PIPX_BIN_DIR=/usr/local/bin PIPX_MAN_DIR=/usr/local/share/man pipx inject lemoncheesecake lemoncheesecake-requests && \
   apt-get clean && \
   rm -rf /var/lib/apt/lists/*
+
+RUN \
+  curl https://go.dev/dl/go1.21.8.linux-amd64.tar.gz -o go.tar.gz \
+  rm -rf /usr/local/go && tar -C /usr/local -xzf go.tar.gz \
+  ln -s /usr/local/go/bin/go /usr/bin/go && \
+  ln -s /usr/local/go/bin/gofmt /usr/bin/gofmt
 
 RUN \
   mkdir -p /opt/sonar && cd /opt/sonar && \
