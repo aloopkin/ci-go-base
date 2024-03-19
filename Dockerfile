@@ -14,8 +14,8 @@ RUN \
   rm -rf /var/lib/apt/lists/*
 
 RUN \
-  curl https://go.dev/dl/go1.21.8.linux-amd64.tar.gz -o go.tar.gz \
-  rm -rf /usr/local/go && tar -C /usr/local -xzf go.tar.gz \
+  curl https://go.dev/dl/go1.21.8.linux-amd64.tar.gz -o go.tar.gz && \
+  rm -rf /usr/local/go && tar -C /usr/local -xzf go.tar.gz && \
   ln -s /usr/local/go/bin/go /usr/bin/go && \
   ln -s /usr/local/go/bin/gofmt /usr/bin/gofmt
 
