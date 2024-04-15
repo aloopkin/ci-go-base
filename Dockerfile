@@ -1,5 +1,5 @@
 ARG BASE_IMAGE_TAG
-FROM debian:bookworm-slim
+FROM golang:1.21.9-bookworm
 
 USER root
 
@@ -12,14 +12,6 @@ RUN \
   PIPX_HOME=/opt/pipx PIPX_BIN_DIR=/usr/local/bin PIPX_MAN_DIR=/usr/local/share/man pipx inject lemoncheesecake lemoncheesecake-requests && \
   apt-get clean && \
   rm -rf /var/lib/apt/lists/*
-
-ENV GOTOOLCHAIN=local
-
-RUN \
-  curl -L https://go.dev/dl/go1.21.8.linux-amd64.tar.gz -o go.tar.gz && \
-  rm -rf /usr/local/go && tar -C /usr/local -xzf go.tar.gz && \
-  ln -s /usr/local/go/bin/go /usr/bin/go && \
-  ln -s /usr/local/go/bin/gofmt /usr/bin/gofmt
 
 RUN \
   mkdir -p /opt/sonar && cd /opt/sonar && \
