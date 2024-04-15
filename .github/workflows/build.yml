@@ -27,8 +27,9 @@ jobs:
         echo ::set-output name=TAG::$TAG
     - name: Build docker image
       run: |
-        docker build . \
+        docker buildx build . \
             --no-cache \
+            --platform linux/arm64/v8,linux/amd64 \
             -t "${{ steps.create_docker_tag.outputs.TAG }}" \
             --build-arg BASE_IMAGE_TAG=${{ matrix.verTag }}
     - name: Push image to DockerHub
